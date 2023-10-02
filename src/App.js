@@ -1,47 +1,61 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
+import {
+  About,
+  Articles,
+  Article,
+  NotFound,
+  Users,
+  UserProfile
+} from './templates';
+import {
+  Header,
+  Footer
+} from './organisms';
+import globalStyles from './globalStyles';
+import UserProvider from './hooks/UserContext';
 
-import Home from './components/pages/Home';
-import ArticlePage from './components/pages/ArticlePage';
-import TopicPage from './components/pages/TopicPage';
-import UserPage from './components/pages/UserPage';
-import About from './components/pages/About';
+function App() {
+  globalStyles();
 
-import Navbar from './components/organisms/Navbar';
-import Sidebar from './components/organisms/Sidebar';
-import Footer from './components/organisms/Footer';
-import './style.css';
-
-const Main = styled('main')`
-  width: calc(100% - 2rem);
-  margin: 0 auto;
-  padding: 0 1rem;
-
-  @media(min-width:768px) {
-    display: grid;
-    grid-template-columns: 4fr 1fr;
-    gap: 1rem;
-  }
-`;
-
-const App = () => (
-  <div>
-    <Navbar />
-    <Main>
-      <div>
-        <Switch>
-          <Route exact path='/' component={Home} />
-          <Route path='/articles/:article_id' component={ArticlePage} />
-          <Route path='/topics/:topic' component={TopicPage} />
-          <Route path='/users/:username' component={UserPage} />
-          <Route path='/about' component={About} />
-        </Switch>
-      </div>
-      <Sidebar />
-    </Main>
-    <Footer />
-  </div>
-);
+  return (
+    <UserProvider>
+      <Router>
+        <Header />
+        <main>
+          <Switch>
+            <Route exact path="/">
+              <Articles />
+            </Route>
+            <Route path="/topic/:topic">
+              <Articles />
+            </Route>
+            <Route path="/articles/:id">
+              <Article />
+            </Route>
+            <Route exact path="/users">
+              <Users />
+            </Route>
+            <Route path="/users/:username">
+              <UserProfile />
+            </Route>
+            <Route path="/about">
+              <About />
+            </Route>
+            <Route path="/404">
+              <NotFound />
+            </Route>
+            <Redirect to="/404" />
+          </Switch>
+        </main>
+        <Footer />
+      </Router>
+    </UserProvider>
+  );
+}
 
 export default App;
