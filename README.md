@@ -1,22 +1,23 @@
-# Northcoders News v1
+# Northcoders News Two
 
-Northcoders News is a social news aggregation, content rating, and discussion website, similar to Reddit. Articles, which are divided into topics, can be up- or down-voted. Users can also add comments to an article, which can also be up- or down-voted.
+Northcoders News v2 is a social news aggregation, web content rating, and discussion website, featuring stories arranged by topic. Each story can be up- or down-voted, and users can comment and vote upon each story. This project is created from a sprint on the Northcoders bootcamp.
 
-## Requirements
+[Read more about this version here.](https://www.joeyimlay.dev/posts/northcoders-news-revisited/)
+
+## requirements
 
 - Node v14.17.3
 
-## Tech stack
+## installation
 
-- React
-- Redux
-- Bulma
-
-## Local development
-
-```bash
-  git clone https://github.com/dentednerd/nc-news-1.git
-  cd nc-news-1
-  npm install
-  npm start
+```sh
+git clone https://github.com/dentednerd/nc-news-2.git
+cd nc-news-2
+yarn
+yarn start
 ```
+
+## notes
+
+- components by [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) structure
+- used [styled-components](https://styled-components.com/) instead of [Bulma](https://bulma.io/)
