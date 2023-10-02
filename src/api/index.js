@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://nc-news-sql-dentednerd.herokuapp.com/api',
+  baseURL: 'https://nc-news-finale.fly.dev/api',
 });
 
 export const fetchArticles = async (topic, page, sortBy) => {
